@@ -1,4 +1,4 @@
-# CONSTRUCT WEEK PROJECT OF RCT-101
+# RCT-101 CONSTRUCT WEEK PROJECT
 
 ### CLONE OF https://www.kindmeal.my/
 
