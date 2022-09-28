@@ -9,6 +9,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const formDetails = {
   name: "",
@@ -21,6 +22,7 @@ const formDetails = {
 
 function SignUpForm() {
   const [formData, setFormData] = useState(formDetails);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -44,6 +46,7 @@ function SignUpForm() {
       alert("Fields can't be empty. Please fill the details !");
     } else {
       localStorage.setItem("signupData", JSON.stringify(formData));
+      navigate("/login");
     }
     setFormData(formDetails);
   };

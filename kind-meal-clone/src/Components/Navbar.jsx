@@ -138,14 +138,20 @@ function Navbar() {
 
           <HStack>
             <Text fontSize="xs">Login</Text>
-            <Button colorScheme="blue" h="6" p="0 1">
-              Facebook
-            </Button>
-            <Button color="white" background="blackAlpha.700" h="6" p="0 1">
-              Email
-            </Button>
+            <Link to="/login">
+              <Button colorScheme="blue" h="6" p="0 1">
+                Facebook
+              </Button>
+            </Link>
+
+            <Link to="/login">
+              <Button color="white" background="blackAlpha.700" h="6" p="0 1">
+                Email
+              </Button>
+            </Link>
+
             <Text fontSize="xl">|</Text>
-            {/* Sign Up Modal */}
+            {/* Sign Up Modal start */}
             <Text cursor="pointer" onClick={onOpen} fontSize="xs">
               Sign Up
             </Text>
@@ -187,6 +193,7 @@ function Navbar() {
                           marginBottom="15px"
                           borderRadius="15px"
                           cursor="pointer"
+                          onClick={onClose}
                         >
                           <Box width="30%">
                             <Image
@@ -222,13 +229,19 @@ function Navbar() {
                     justifyContent="space-between"
                     alignItems="center"
                   >
-                    <Text cursor="pointer">Member Login</Text>
+                    <Link to="/login">
+                      <Text onClick={onClose} cursor="pointer">
+                        Member Login
+                      </Text>
+                    </Link>
                     {/* Login Modal */}
                     <Text cursor="pointer">Forgot Password?</Text>
                   </Box>
                 </ModalFooter>
               </ModalContent>
             </Modal>
+
+            {/* Sign Up modal end */}
           </HStack>
         </Flex>
       </Box>
