@@ -1,12 +1,12 @@
 import React from "react";
-import { Box, Button, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Image, Skeleton, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Pagination from "./Pagination";
 
 const getKindMeals = (params = {}) => {
-  return axios.get(`http://localhost:3001/meals`, {
+  return axios.get(`https://my-json-servers.herokuapp.com/meals`, {
     params: {
       _page: params.page,
       _limit: params.limit,
@@ -17,16 +17,45 @@ const getKindMeals = (params = {}) => {
 function MealDeals() {
   const [meals, setMeals] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getKindMeals({ page, limit: 6 })
       .then((data) => {
+        setLoading(false);
         setMeals(data.data);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [page]);
+
+  if (loading) {
+    return (
+      <Stack my={20}>
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+        <Skeleton height="25px" />
+      </Stack>
+    );
+  }
 
   return (
     <Box width="100%" paddingBottom="100px">
@@ -37,7 +66,7 @@ function MealDeals() {
             Meat-Free Deals | Restaurants In India
           </Text>
 
-          <Text fontSize="16px" marginTop="10px">
+          <Text fontSize="16px" marginTop="25px">
             Browse delicious meat-free, vegetarian deals from top restaurants
             and cafes! Just click on "Get Free Coupon" to obtain instant
             discounts and dine at the restaurants. No upfront payment, booking
@@ -70,7 +99,7 @@ function MealDeals() {
         gridTemplateColumns="repeat(2,1fr)"
         gridTemplateRows="auto"
         gap="35px 0"
-        marginTop="20px"
+        marginTop="25px"
       >
         {meals.map((item) => (
           <Box
@@ -100,7 +129,7 @@ function MealDeals() {
                 </Text>
               </Box>
 
-              <Text marginTop="20px" fontSize="sm">
+              <Text marginTop="25px" fontSize="sm">
                 {item.description}
               </Text>
 
@@ -114,7 +143,7 @@ function MealDeals() {
                   color="white"
                   background="red.500"
                   width="50%"
-                  marginBottom="-10px"
+                  marginBottom="-25px"
                 >
                   Get FREE Coupon
                 </Button>
@@ -130,7 +159,7 @@ function MealDeals() {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              margin="10px 10px 0px 10px"
+              margin="25px 25px 0px 25px"
             >
               {/* Image tags box */}
               <Box

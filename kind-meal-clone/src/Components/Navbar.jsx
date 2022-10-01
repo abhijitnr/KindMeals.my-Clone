@@ -44,7 +44,7 @@ const links = [
   },
   {
     path: "/directory",
-    title: "Home",
+    title: "Directory",
   },
   {
     path: "/articles",
