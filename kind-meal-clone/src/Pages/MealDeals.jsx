@@ -6,7 +6,7 @@ import axios from "axios";
 import Pagination from "./Pagination";
 
 const getKindMeals = (params = {}) => {
-  return axios.get(`http://localhost:3001/meals`, {
+  return axios.get(`https://my-json-servers.herokuapp.com/meals`, {
     params: {
       _page: params.page,
       _limit: params.limit,

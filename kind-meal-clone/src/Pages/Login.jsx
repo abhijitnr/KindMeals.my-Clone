@@ -9,7 +9,7 @@ function Login() {
   const navigate = useNavigate();
 
   const signupData = JSON.parse(localStorage.getItem("signupData"));
-  console.log(signupData);
+  // console.log(signupData);
 
   const handleLogin = (event) => {
     event.preventDefault();
