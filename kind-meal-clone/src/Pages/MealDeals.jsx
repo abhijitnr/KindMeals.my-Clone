@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Pagination from "./Pagination";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 const getKindMeals = (params = {}) => {
   return axios.get(`https://my-json-servers.herokuapp.com/meals`, {
@@ -18,6 +20,7 @@ function MealDeals() {
   const [meals, setMeals] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const { addToRecipe } = useContext(AuthContext);
 
   useEffect(() => {
     setLoading(true);
@@ -144,6 +147,7 @@ function MealDeals() {
                   background="red.500"
                   width="50%"
                   marginBottom="-25px"
+                  onClick={() => addToRecipe(item)}
                 >
                   Get FREE Coupon
                 </Button>
@@ -159,7 +163,7 @@ function MealDeals() {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              margin="25px 25px 0px 25px"
+              margin="6px 15px 0px 15px"
             >
               {/* Image tags box */}
               <Box

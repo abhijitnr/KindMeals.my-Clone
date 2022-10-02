@@ -20,6 +20,8 @@ import { Link } from "react-router-dom";
 import { LinkIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 const links = [
   {
@@ -73,6 +75,24 @@ const signupModal = [
 
 function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isAuth, toggleAuth } = useContext(AuthContext);
+
+  console.log(isAuth);
+
+  const emailFromLs = JSON.parse(localStorage.getItem("signupData"));
+
+  // emailFromLs === null ? <Navigate to="/" /> : toggleAuth();
+
+  // console.log(emailFromLs.email);
+
+  // const logout = () => {
+  //   localStorage.clear("signupData");
+  //   navigate("/");
+  // };
+
+  // if (isAuth === true) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <Box width="100%" backgroundColor="white">
@@ -136,113 +156,136 @@ function Navbar() {
 
           <Spacer />
 
-          <HStack>
-            <Text fontSize="xs">Login</Text>
-            <Link to="/login">
-              <Button colorScheme="blue" h="6" p="0 1">
-                Facebook
-              </Button>
-            </Link>
+          {isAuth === false ? (
+            <HStack>
+              <Text fontSize="xs">Login</Text>
+              <Link to="/login">
+                <Button colorScheme="blue" h="6" p="0 1">
+                  Facebook
+                </Button>
+              </Link>
 
-            <Link to="/login">
-              <Button color="white" background="blackAlpha.700" h="6" p="0 1">
-                Email
-              </Button>
-            </Link>
+              <Link to="/login">
+                <Button color="white" background="blackAlpha.700" h="6" p="0 1">
+                  Email
+                </Button>
+              </Link>
 
-            <Text fontSize="xl">|</Text>
-            {/* Sign Up Modal start */}
-            <Text cursor="pointer" onClick={onOpen} fontSize="xs">
-              Sign Up
-            </Text>
+              <Text fontSize="xl">|</Text>
+              {/* Sign Up Modal start */}
+              <Text cursor="pointer" onClick={onOpen} fontSize="xs">
+                Sign Up
+              </Text>
 
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>
-                  <Box textAlign="center">
-                    <Image
-                      src="https://www.kindmeal.my/images/logo-kindmeal.png"
-                      alt="Kind meal logo"
-                    />
-                    <Text
-                      color="blackAlpha.700"
-                      fontSize="2xl"
-                      marginTop="10px"
-                    >
-                      Join KindMeal For FREE Now
-                    </Text>
-                    <Text color="gray" fontSize="15px">
-                      Please select the type of membership to proceed
-                    </Text>
-                  </Box>
-                </ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Box>
-                    {signupModal.map((item) => (
-                      <Link key={item.image} to="/signup">
-                        <Box
-                          width="100%"
-                          height="150px"
-                          display="flex"
-                          justifyContent="space-between"
-                          alignItems="center"
-                          border="1px solid gray"
-                          padding="5px"
-                          marginBottom="15px"
-                          borderRadius="15px"
-                          cursor="pointer"
-                          onClick={onClose}
-                        >
-                          <Box width="30%">
-                            <Image
-                              src={item.image}
-                              alt={item.title}
-                              width="100%"
-                            />
-                          </Box>
-                          <Box width="67%">
-                            <Text color="blackAlpha.700" fontWeight="bold">
-                              {item.title}
-                            </Text>
-                            <Spacer />
-                            <Text
-                              marginTop="10px"
-                              color="gray"
-                              width="98%"
-                              fontSize="xs"
-                            >
-                              {item.description}
-                            </Text>
-                          </Box>
-                        </Box>
-                      </Link>
-                    ))}
-                  </Box>
-                </ModalBody>
-
-                <ModalFooter>
-                  <Box
-                    width="100%"
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
-                    <Link to="/login">
-                      <Text onClick={onClose} cursor="pointer">
-                        Member Login
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>
+                    <Box textAlign="center">
+                      <Image
+                        src="https://www.kindmeal.my/images/logo-kindmeal.png"
+                        alt="Kind meal logo"
+                      />
+                      <Text
+                        color="blackAlpha.700"
+                        fontSize="2xl"
+                        marginTop="10px"
+                      >
+                        Join KindMeal For FREE Now
                       </Text>
-                    </Link>
-                    {/* Login Modal */}
-                    <Text cursor="pointer">Forgot Password?</Text>
-                  </Box>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
+                      <Text color="gray" fontSize="15px">
+                        Please select the type of membership to proceed
+                      </Text>
+                    </Box>
+                  </ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <Box>
+                      {signupModal.map((item) => (
+                        <Link key={item.image} to="/signup">
+                          <Box
+                            width="100%"
+                            height="150px"
+                            display="flex"
+                            justifyContent="space-between"
+                            alignItems="center"
+                            border="1px solid gray"
+                            padding="5px"
+                            marginBottom="15px"
+                            borderRadius="15px"
+                            cursor="pointer"
+                            onClick={onClose}
+                          >
+                            <Box width="30%">
+                              <Image
+                                src={item.image}
+                                alt={item.title}
+                                width="100%"
+                              />
+                            </Box>
+                            <Box width="67%">
+                              <Text color="blackAlpha.700" fontWeight="bold">
+                                {item.title}
+                              </Text>
+                              <Spacer />
+                              <Text
+                                marginTop="10px"
+                                color="gray"
+                                width="98%"
+                                fontSize="xs"
+                              >
+                                {item.description}
+                              </Text>
+                            </Box>
+                          </Box>
+                        </Link>
+                      ))}
+                    </Box>
+                  </ModalBody>
 
-            {/* Sign Up modal end */}
-          </HStack>
+                  <ModalFooter>
+                    <Box
+                      width="100%"
+                      display="flex"
+                      justifyContent="space-between"
+                      alignItems="center"
+                    >
+                      <Link to="/login">
+                        <Text onClick={onClose} cursor="pointer">
+                          Member Login
+                        </Text>
+                      </Link>
+                      {/* Login Modal */}
+                      <Text cursor="pointer">Forgot Password?</Text>
+                    </Box>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+
+              {/* Sign Up modal end */}
+            </HStack>
+          ) : (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              gap="10px"
+            >
+              <Text
+                cursor="pointer"
+                color="navy"
+                fontSize="xl"
+                onClick={toggleAuth}
+              >
+                {emailFromLs.email} |
+              </Text>
+              <Link to="/myrecipes">
+                <Text color="red" fontSize="md">
+                  My Recipes
+                </Text>
+              </Link>
+            </Box>
+          )}
         </Flex>
       </Box>
       {/* Navbar 1 end */}

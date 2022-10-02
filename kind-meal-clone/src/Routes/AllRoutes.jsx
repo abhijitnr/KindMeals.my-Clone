@@ -7,6 +7,7 @@ import Help from "../Pages/Help";
 import PageNotFound from "../Pages/PageNotFound";
 import Signup from "../Pages/Signup";
 import Login from "../Pages/Login";
+import MyRecipes from "../Pages/MyRecipes";
 
 function AllRoutes() {
   return (
@@ -22,6 +23,7 @@ function AllRoutes() {
         <Route path="/help" element={<Help />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/myrecipes" element={<MyRecipes />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
