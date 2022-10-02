@@ -1,12 +1,15 @@
 import { Box, FormControl, Input, Image, Text, Button } from "@chakra-ui/react";
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { toggleAuth } = useContext(AuthContext);
 
   const signupData = JSON.parse(localStorage.getItem("signupData"));
   // console.log(signupData);
@@ -14,6 +17,7 @@ function Login() {
   const handleLogin = (event) => {
     event.preventDefault();
     if (signupData.email === email && signupData.password === password) {
+      toggleAuth();
       navigate("/");
     } else {
       alert("Credential doesn't match. Please fill correct details !");
