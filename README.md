@@ -12,7 +12,9 @@
 
 ### 6. Project end in : `2nd october 2022`
 
-### 7. Project overview
+### 7. Live project link : https://rct-101-construct-week-project.netlify.app/
+
+### 8. Project overview
 
 - Navbar & Home Page ![Home Page](home.png)
 
