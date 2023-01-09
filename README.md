@@ -12,7 +12,7 @@
 
 ### 6. Project end in : `2nd october 2022`
 
-### 7. Live project link : https://rct-101-construct-week-project.netlify.app/
+### 7. Live project link : https://kindmeal-clone-by-abhijit.netlify.app/
 
 ### 8. Project overview
 
