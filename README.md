@@ -16,22 +16,23 @@
 
 ### 8. Project overview
 
-- Navbar & Home Page ![Home Page](home.png)
+- Navbar & Home Page
+  ![Home Page](./assets/home.png)
 
-- Navbar After Login ![After Login](afterlogin.png)
+- Navbar After Login ![After Login](./assets/afterlogin.png)
 
-- Footer ![Footer](footer.png)
+- Footer ![Footer](./assets/footer.png)
 
-- MealDeals Page ![MealDeals Page](mealdeals.png)
+- MealDeals Page ![MealDeals Page](./assets/mealdeals.png)
 
-- Articles Page ![Articles Page](articles.png)
+- Articles Page ![Articles Page](./assets/articles.png)
 
-- My Recipes Page ![My Recipes](myrecipes.png)
+- My Recipes Page ![My Recipes](./assets/myrecipes.png)
 
-- Help Page ![Help Page](help.png)
+- Help Page ![Help Page](./assets/help.png)
 
-- Sign Up Modal ![Sign Up Modal](signupmodal.png)
+- Sign Up Modal ![Sign Up Modal](../assetssignupmodal.png)
 
-- Sign Up Page ![Sihn Up Page](signup.png)
+- Sign Up Page ![Sihn Up Page](./assets/signup.png)
 
-- Login Page ![Login Page](login.png)
+- Login Page ![Login Page](./assets/login.png)

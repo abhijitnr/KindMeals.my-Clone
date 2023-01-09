@@ -5,7 +5,7 @@ import { Box, Button, Image, Skeleton, Stack, Text } from "@chakra-ui/react";
 import Pagination from "./Pagination";
 
 const getArticles = (params = {}) => {
-  return axios.get(`https://my-json-servers.herokuapp.com/artiles`, {
+  return axios.get(`https://my-json-server-ke2r.onrender.com/artiles`, {
     params: {
       _page: params.page,
       _limit: params.limit,
