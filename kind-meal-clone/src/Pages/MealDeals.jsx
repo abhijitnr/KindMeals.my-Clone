@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 
 const getKindMeals = (params = {}) => {
-  return axios.get(`https://my-json-servers.herokuapp.com/meals`, {
+  return axios.get(`https://my-json-server-ke2r.onrender.com/meals`, {
     params: {
       _page: params.page,
       _limit: params.limit,
